@@ -2,8 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# SQLite connection (update if using PostgreSQL/MySQL later)
-SQLALCHEMY_DATABASE_URL = "sqlite:///./instance/shopsmart.db"
+# Replace these with your credentials
+DATABASE_URL = "mysql+pymysql://root:your_password@localhost:3306/shopsmart"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
