@@ -2,10 +2,6 @@ from fastapi import FastAPI
 from routes.customer_routes import router as customer_router
 from routes.product_routes import router as product_router
 from routes.transaction_routes import router as transaction_router
-from database import Base, engine
-
-# Create all tables from models
-Base.metadata.create_all(bind=engine)
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -13,6 +9,11 @@ app = FastAPI(
     description="FastAPI CRUD system for Customers, Products, and Transactions",
     version="1.0.0"
 )
+
+# Root route to show a welcome message
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to ShopSmart Backend API"}
 
 # Register routes
 app.include_router(customer_router, prefix="/customers", tags=["Customers"])
